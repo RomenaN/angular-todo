@@ -1,0 +1,31 @@
+.task{
+    @apply w-full;
+
+    &__table{
+        @apply w-full border; 
+    }
+
+    &__table-thead tr th{
+        @apply py-1 border text-start px-2 text-sky-900;
+    }
+
+    &__table-tbody tr td{
+        @apply py-1 border text-start px-2 text-sky-900;
+    }
+
+    &__table-tbody tr{
+        @apply hover:bg-sky-50;
+    }
+}
+
+.toolbar{
+    @apply py-2;
+
+    &__button{
+        @apply bg-sky-800 py-1 px-2 rounded text-white text-sm hover:bg-sky-700 active:bg-sky-900 duration-200;
+    }
+}
+
+.task-delete-button{
+    @apply w-full rounded bg-sky-800 p-0.5 text-white hover:bg-sky-700 active:bg-sky-900 duration-200 text-sm;
+}

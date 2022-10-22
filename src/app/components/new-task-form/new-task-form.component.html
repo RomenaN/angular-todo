@@ -1,0 +1,34 @@
+<section class="form">
+  <header class="form__header">Pridėti naują užduotį</header>
+  <div class="form__body">
+    <form class="user-profile" [formGroup]="form" (submit)="createTask()">
+      <span class="form__form-group">
+        <div class="form__control-group">
+          <label for="task-title">Užduoties pavadinimas</label>
+          <input
+            type="text"
+            class="text-control"
+            id="task-title"
+            placeholder="Įveskite pavadinimą"
+            formControlName="taskTitle"
+          />
+        </div>
+        <div class="form__control-group">
+          <label for="task-type">Užduoties tipas</label>
+          <select
+            class="select-control"
+            id="task-type"
+            formControlName="taskType"
+          >
+            <option *ngFor="let row of taskTypesList" [value]="row.value">
+              {{ row.label }}
+            </option>
+          </select>
+        </div>
+      </span>
+      <span class="form__form-action">
+        <button class="submit-button" type="submit">Pridėti užduotį</button>
+      </span>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+.card{
+    @apply w-full flex justify-center p-10;
+
+    &__content{
+        @apply w-1/2 p-3 rounded-md shadow-sm border bg-white flex flex-col gap-3;
+    }
+
+    &__header{
+        @apply w-full font-bold text-2xl text-sky-900 border-sky-900 border-b-2;
+    }
+}

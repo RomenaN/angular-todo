@@ -1,0 +1,39 @@
+<app-page-card>
+  <section class="task">
+    <div class="toolbar">
+      <button
+        type="button"
+        class="toolbar__button"
+        (click)="showForm = !showForm"
+      >
+        {{ showForm ? "Uždaryti formą" : "Naują užduotis" }}
+      </button>
+    </div>
+    <div>
+      <app-new-task-form
+        *ngIf="showForm"
+        (refreshTaskList)="getTask()"
+      ></app-new-task-form>
+    </div>
+    <table class="task__table">
+      <thead class="task__table-thead">
+        <tr>
+          <th>Užduoties pavadinimas</th>
+          <th>Užduoties tipas</th>
+          <th>Veiksmai</th>
+        </tr>
+      </thead>
+      <tbody class="task__table-tbody">
+        <tr *ngFor="let row of taskList; index as i">
+          <td>{{ row.taskTitle }}</td>
+          <td>{{ row.taskType }}</td>
+          <td>
+            <button class="task-delete-button" (click)="deleteTask(i)">
+              Trinti
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</app-page-card>

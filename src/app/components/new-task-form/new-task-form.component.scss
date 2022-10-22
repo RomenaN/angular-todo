@@ -1,0 +1,27 @@
+.form{
+    @apply p-2 border shadow-inner rounded mb-2 flex justify-center flex-col bg-slate-50;
+
+    &__header{
+        @apply font-semibold text-slate-800 text-center;
+    }
+
+    &__body{
+        @apply flex flex-col justify-center py-3;
+    }
+
+    &__form-group{
+        @apply flex justify-center gap-3;
+    }
+
+    &__control-group{
+        @apply flex flex-col;
+    }
+
+    &__control-group label{
+        @apply text-sm;
+    }
+
+    &__form-action{
+        @apply pt-5 flex justify-center;
+    }
+}

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply bg-slate-100;
+}
+
+.text-control{
+    @apply  py-1 px-3 w-80 rounded border outline-none focus:border-sky-900 duration-200;
+}
+
+.select-control{
+    @apply  py-1 px-3 w-80 rounded border outline-none focus:border-sky-900 duration-200; 
+}
+
+.submit-button{
+    @apply  bg-sky-800 py-1 px-3 rounded text-white text-sm hover:bg-sky-700 active:bg-sky-900 duration-200;
+}
