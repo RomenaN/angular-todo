@@ -1,0 +1,10 @@
+<div class="toolbar">
+  <div
+    class="toolbar__card"
+    *ngFor="let row of countetTask"
+    [ngClass]="row.status"
+  >
+    <header class="toolbar__header">{{ row.title }}</header>
+    <span class="toolbar__result"> {{ row.count }} </span>
+  </div>
+</div>

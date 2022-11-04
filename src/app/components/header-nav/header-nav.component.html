@@ -1,0 +1,15 @@
+<section class="header">
+  <div class="header__item-wrapper">
+    <div class="brand">TO-DO <i class="fa fa-check"></i></div>
+    <nav class="nav">
+      <ul>
+        <li
+          *ngFor="let row of navItems"
+          routerLinkActive="bg-sky-500 bg-opacity-10"
+        >
+          <button type="button" [routerLink]="row.url">{{ row.title }}</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>

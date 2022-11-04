@@ -18,14 +18,21 @@
     }
 }
 
-.toolbar{
-    @apply py-2;
 
-    &__button{
-        @apply bg-sky-800 py-1 px-2 rounded text-white text-sm hover:bg-sky-700 active:bg-sky-900 duration-200;
-    }
-}
 
 .task-delete-button{
-    @apply w-full rounded bg-sky-800 p-0.5 text-white hover:bg-sky-700 active:bg-sky-900 duration-200 text-sm;
+    @apply w-fit px-3 rounded bg-red-800 p-0.5 text-white hover:bg-red-700 active:bg-red-900 duration-200 text-sm;
+}
+
+.task-update-button{
+    @apply w-fit px-3 rounded bg-sky-800 p-0.5 text-white hover:bg-sky-700 active:bg-sky-900 duration-200 text-sm;
+}
+
+
+.action-wrapper{
+    @apply flex gap-2;
+}
+
+.fit-col{
+    @apply w-0 #{!important}
 }

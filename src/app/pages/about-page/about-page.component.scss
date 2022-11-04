@@ -1,0 +1,20 @@
+.about{
+    @apply flex flex-col justify-center items-center gap-5 p-16 relative;
+
+    &__header{
+        @apply flex justify-center items-center flex-col gap-3;
+    }
+
+    &__header-icon{
+        @apply text-6xl text-sky-900 border rounded-full w-[66px] text-center;
+    }
+
+    &__text{
+        @apply text-sky-800 flex gap-2 flex-col;
+    }
+
+    &__copyright{
+        @apply text-gray-500 absolute bottom-3;
+    }
+ 
+}

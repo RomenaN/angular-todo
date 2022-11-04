@@ -1,8 +1,8 @@
 .card{
-    @apply w-full flex justify-center p-10;
+    @apply w-full flex justify-center;
 
     &__content{
-        @apply w-1/2 p-3 rounded-md shadow-sm border bg-white flex flex-col gap-3;
+        @apply w-full p-3 rounded-md shadow-sm border bg-white flex flex-col gap-3;
     }
 
     &__header{

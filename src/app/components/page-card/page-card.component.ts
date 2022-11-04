@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page-card',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-card.component.scss'],
 })
 export class PageCardComponent implements OnInit {
+  @Input() title: string = '';
+
   constructor() {}
 
   ngOnInit(): void {}

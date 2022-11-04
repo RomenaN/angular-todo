@@ -1,0 +1,15 @@
+.form{
+    @apply w-full flex justify-center items-center flex-col py-7;
+
+    &__group{
+        @apply  max-w-md w-full flex flex-col gap-3 ;
+    }
+
+    &__control-group{
+        @apply flex flex-col;
+    }
+
+    &__form-action{
+        @apply pt-5 flex justify-center;
+    }
+}

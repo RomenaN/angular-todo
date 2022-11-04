@@ -5,15 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './pages/task-list/task-list.component';
 import { PageCardComponent } from './components/page-card/page-card.component';
-import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { HeaderNavComponent } from './components/header-nav/header-nav.component';
+import { NewTaskPageComponent } from './pages/new-task-page/new-task-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { StatusCardsComponent } from './components/status-cards/status-cards.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
     PageCardComponent,
-    NewTaskFormComponent,
+    LayoutPageComponent,
+    HeaderNavComponent,
+    NewTaskPageComponent,
+    AboutPageComponent,
+    StatusCardsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

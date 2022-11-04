@@ -1,0 +1,11 @@
+.layout{
+    @apply flex justify-center flex-col items-center;
+
+    &__aside{
+        @apply w-full;
+    }
+
+    &__main{
+        @apply pt-5 max-w-5xl w-full;
+    }
+}

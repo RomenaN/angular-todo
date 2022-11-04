@@ -1,0 +1,26 @@
+.header{
+    @apply flex justify-center items-center bg-white shadow-lg;
+
+    &__item-wrapper{
+        @apply flex justify-between items-center max-w-5xl w-full;
+    }
+}
+
+.brand{
+    @apply text-sky-900 text-2xl ;
+}
+
+.nav{
+    @apply p-3 flex justify-end items-end;
+
+    ul{
+        @apply flex justify-end items-end;
+    }
+
+    ul li{
+        @apply inline px-5 text-sky-800 font-semibold hover:text-sky-600
+        duration-100;
+    }
+}
+
+

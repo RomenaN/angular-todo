@@ -9,10 +9,14 @@ export class TasksService {
 
   constructor() {}
 
-  createTask(value: TaskDataObj): void {
+  createTask(value: TaskDataObj, id: string): void {
     if (localStorage.getItem('task')) {
-      this.taskList = this.getTask();
-      this.taskList.push(value);
+      this.taskList = this.getTasks();
+      if (id === 'new') {
+        this.taskList.push(value);
+      } else {
+        this.taskList[Number(id)] = value;
+      }
       localStorage.setItem('task', JSON.stringify(this.taskList));
     } else {
       this.taskList.push(value);
@@ -20,13 +24,17 @@ export class TasksService {
     }
   }
 
-  getTask(): TaskDataObj[] {
+  getTasks(): TaskDataObj[] {
     return JSON.parse(localStorage.getItem('task') as string);
+  }
+
+  getTask(id: string): TaskDataObj {
+    return this.getTasks()[Number(id)];
   }
 
   deleteTask(index: number): void {
     if (index > -1) {
-      const tasks = this.getTask();
+      const tasks = this.getTasks();
       tasks.splice(index, 1);
       localStorage.setItem('task', JSON.stringify(tasks));
     }
@@ -35,20 +43,24 @@ export class TasksService {
   getTaskTypes(): TaskTypes[] {
     return [
       {
+        value: 'Neskubus',
+        status: 'info',
+        label: 'Neskubus',
+      },
+      {
+        value: 'Rutininis',
+        status: 'success',
+        label: 'Rutininis',
+      },
+      {
         value: 'Skubus',
+        status: 'warn',
         label: 'Skubus',
       },
       {
         value: 'Ypač skubus',
+        status: 'risk',
         label: 'Ypač skubus',
-      },
-      {
-        value: 'Rutininis',
-        label: 'Rutininis',
-      },
-      {
-        value: 'Neskubus',
-        label: 'Neskubus',
       },
     ];
   }
