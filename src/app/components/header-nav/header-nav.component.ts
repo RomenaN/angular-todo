@@ -19,6 +19,7 @@ export class HeaderNavComponent implements OnInit {
     this.navItems = [
       { title: 'Užduočių sąrašas', url: 'task-list' },
       { title: 'Nauja užduotis', url: 'new-task/new' },
+      { title: 'Valiutų kursai', url: 'exchange' },
       { title: 'Apie', url: 'about' },
     ];
   }
