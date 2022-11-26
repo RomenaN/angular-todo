@@ -17,9 +17,8 @@ export class HeaderNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.navItems = [
-      { title: 'Užduočių sąrašas', url: 'task-list' },
-      { title: 'Nauja užduotis', url: 'new-task/new' },
-      { title: 'Valiutų kursai', url: 'exchange' },
+      { title: 'Mokinių sąašas', url: 'student-list' },
+      { title: 'Registruoti', url: 'register/new' },
       { title: 'Apie', url: 'about' },
     ];
   }

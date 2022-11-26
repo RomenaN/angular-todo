@@ -1,0 +1,111 @@
+<app-page-card title="Užregistruoti mokinį">
+  <section class="form">
+    <form [formGroup]="form" (submit)="createTask()">
+      <div class="form__group">
+        <div class="form__control-group">
+          <label for="nameSurname">Vardas, Pavardė*</label>
+          <input
+            appInvalidInput
+            [validatorValue]="form.controls['nameSurname']"
+            required="required"
+            type="text"
+            class="text-control"
+            id="nameSurname"
+            placeholder="Įveskite vardą ir pavardę"
+            formControlName="nameSurname"
+          />
+        </div>
+
+        <div class="form__control-group">
+          <label for="yearOfBirth">Metai*</label>
+          <input
+            appInvalidInput
+            [validatorValue]="form.controls['yearOfBirth']"
+            required="required"
+            type="number"
+            class="text-control"
+            id="yearOfBirth"
+            placeholder="Įveskite metus"
+            formControlName="yearOfBirth"
+          />
+        </div>
+
+        <div class="flex justify-start items-center gap-4">
+          <div class="form__radio-control-group">
+            <label for="female">Moteris</label>
+            <input
+              type="radio"
+              id="female"
+              value="female"
+              formControlName="gender"
+            />
+          </div>
+
+          <div class="form__radio-control-group">
+            <label for="male">Vyras</label>
+            <input
+              type="radio"
+              value="male"
+              id="male"
+              formControlName="gender"
+            />
+          </div>
+
+          <div class="form__radio-control-group">
+            <label for="lgbt">LGBT</label>
+            <input
+              type="radio"
+              value="lgbt"
+              id="lgbt"
+              formControlName="gender"
+            />
+          </div>
+        </div>
+
+        <div class="form__control-group">
+          <label for="email">El. paštas</label>
+          <input
+            appInvalidInput
+            [validatorValue]="form.controls['email']"
+            required="required"
+            type="email"
+            class="text-control"
+            id="email"
+            placeholder="Įveskite el. pašto adresą"
+            formControlName="email"
+          />
+        </div>
+
+        <div class="form__control-group">
+          <label for="phone">Telefonas</label>
+          <input
+            type="tel"
+            appInvalidInput
+            [validatorValue]="form.controls['phone']"
+            class="text-control"
+            id="phone"
+            placeholder="+370"
+            formControlName="phone"
+          />
+        </div>
+
+        <div class="form__control-group">
+          <label for="class">Kasė</label>
+          <input
+            type="number"
+            appInvalidInput
+            [validatorValue]="form.controls['class']"
+            class="text-control"
+            id="class"
+            placeholder="Įveskite klasę"
+            formControlName="class"
+          />
+        </div>
+
+        <span class="form__form-action">
+          <button class="submit-button" type="submit">Pridėti užduotį</button>
+        </span>
+      </div>
+    </form>
+  </section>
+</app-page-card>

@@ -9,6 +9,10 @@
         @apply flex flex-col;
     }
 
+    &__radio-control-group{
+        @apply flex flex-row gap-2 justify-start items-center;
+    }
+
     &__form-action{
         @apply pt-5 flex justify-center;
     }

@@ -4,9 +4,9 @@ import { TaskDataObj } from 'src/app/model/task.model';
 import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
-  selector: 'app-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss'],
+  selector: 'app-student-list',
+  templateUrl: './student-list.component.html',
+  styleUrls: ['./student-list.component.scss'],
 })
 export class TaskListComponent implements OnInit {
   showForm: boolean = false;
@@ -27,6 +27,6 @@ export class TaskListComponent implements OnInit {
   }
 
   updateTask(index: number): void {
-    this.route.navigate(['new-task', index]);
+    this.route.navigate(['register', index]);
   }
 }
