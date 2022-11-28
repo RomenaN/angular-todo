@@ -3,21 +3,35 @@
     <table class="task__table">
       <thead class="task__table-thead">
         <tr>
-          <th>Užduoties pavadinimas</th>
-          <th>Užduoties tipas</th>
-          <th>Veiksmai</th>
+          <th>Vardas, Pavardė</th>
+          <th>Metai</th>
+          <th>El. paštas</th>
+          <th>Telefonas</th>
+          <th>Klasė</th>
+          <th>lytis</th>
         </tr>
       </thead>
       <tbody class="task__table-tbody">
-        <tr *ngFor="let row of taskList; index as i">
-          <td>{{ row.taskTitle }}</td>
-          <td>{{ row.taskType }}</td>
+        <tr *ngFor="let row of studentList; index as i">
+          <td>{{ row.name_surename }}</td>
+          <td>{{ row.year_of_birth }}</td>
+          <td>{{ row.email }}</td>
+          <td>{{ row.phone }}</td>
+          <td>{{ row.class }}</td>
+          <td>{{ row.gender }}</td>
+
           <td class="fit-col">
             <div class="action-wrapper">
-              <button class="task-update-button" (click)="updateTask(i)">
+              <button
+                class="task-update-button"
+                [routerLink]="'/register/' + row.id"
+              >
                 Redaguoti
               </button>
-              <button class="task-delete-button" (click)="deleteTask(i)">
+              <button
+                class="task-delete-button"
+                (click)="deleteStudent(row.id)"
+              >
                 Trinti
               </button>
             </div>

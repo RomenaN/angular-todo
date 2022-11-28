@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TaskTypes } from 'src/app/model/task.model';
-import { TasksService } from 'src/app/services/tasks.service';
+import { Student } from 'src/app/model/studens.model';
+import { FireBaseService } from 'src/app/services/fire-base.service';
 import { yearOfBirth } from 'src/app/validators/year-of-birth.validator';
 
 @Component({
@@ -17,16 +17,18 @@ import { yearOfBirth } from 'src/app/validators/year-of-birth.validator';
 })
 export class NewTaskPageComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
-  taskTypesList: TaskTypes[] = [];
   urlValue: string = '';
   constructor(
     protected formBuilder: FormBuilder,
-    private tasksService: TasksService,
-    private route: Router,
+    private fireBaseService: FireBaseService,
     private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    if (this.activatedRoute.snapshot.params['id'] !== 'new') {
+      this.getStudent(this.activatedRoute.snapshot.params['id']);
+    }
+
     this.form = this.formBuilder.group({
       nameSurname: new FormControl(
         null,
@@ -58,37 +60,48 @@ export class NewTaskPageComponent implements OnInit {
         ])
       ),
     });
-    this.getTask();
-    this.taskTypesList = this.tasksService.getTaskTypes();
   }
 
   createTask(): void {
     if (this.form.status !== 'VALID') {
       alert('Forma turi klaidų');
     } else {
-      console.log(this.form);
+      if (this.activatedRoute.snapshot.params['id'] === 'new') {
+        this.fireBaseService.registerStudent({
+          name_surename: this.form.controls['nameSurname'].value,
+          year_of_birth: this.form.controls['yearOfBirth'].value,
+          gender: this.form.controls['gender'].value,
+          email: this.form.controls['email'].value,
+          phone: this.form.controls['phone'].value,
+          class: this.form.controls['class'].value,
+        });
+      } else {
+        this.fireBaseService.updateStudent(
+          {
+            name_surename: this.form.controls['nameSurname'].value,
+            year_of_birth: this.form.controls['yearOfBirth'].value,
+            gender: this.form.controls['gender'].value,
+            email: this.form.controls['email'].value,
+            phone: this.form.controls['phone'].value,
+            class: this.form.controls['class'].value,
+          },
+          this.activatedRoute.snapshot.params['id']
+        );
+      }
     }
-
-    // this.tasksService.createTask(
-    //   {
-    //     taskTitle: this.form.controls['taskTitle'].value,
-    //     taskType: this.form.controls['taskType'].value,
-    //   },
-    //   this.urlValue
-    // );
-    // this.form.reset();
-    // this.route.navigate(['task-list']);
+  }
+  getStudent(id: string): void {
+    this.fireBaseService.getStudent(id).subscribe((response) => {
+      this.setFormData(response);
+    });
   }
 
-  getTask(): void {
-    // this.urlValue = this.activatedRoute.snapshot.params['id'];
-    // if (this.urlValue !== 'new') {
-    //   this.form.controls['taskTitle'].setValue(
-    //     this.tasksService.getTask(this.urlValue).taskTitle
-    //   );
-    //   this.form.controls['taskType'].setValue(
-    //     this.tasksService.getTask(this.urlValue).taskType
-    //   );
-    // }
+  setFormData(data: Student): void {
+    this.form.controls['nameSurname'].setValue(data.name_surename);
+    this.form.controls['yearOfBirth'].setValue(data.year_of_birth);
+    this.form.controls['gender'].setValue(data.gender);
+    this.form.controls['email'].setValue(data.email);
+    this.form.controls['phone'].setValue(data.phone);
+    this.form.controls['class'].setValue(data.class);
   }
 }

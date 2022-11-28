@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TaskDataObj } from 'src/app/model/task.model';
-import { TasksService } from 'src/app/services/tasks.service';
+import { Student } from 'src/app/model/studens.model';
+import { FireBaseService } from 'src/app/services/fire-base.service';
 
 @Component({
   selector: 'app-student-list',
@@ -10,20 +10,37 @@ import { TasksService } from 'src/app/services/tasks.service';
 })
 export class TaskListComponent implements OnInit {
   showForm: boolean = false;
-  taskList: TaskDataObj[] = [];
-  constructor(private tasksService: TasksService, private route: Router) {}
+  studentList: Student[] = [];
+  constructor(
+    private fireBaseService: FireBaseService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
-    this.getTask();
+    this.getStudents();
   }
 
-  getTask(): void {
-    this.taskList = this.tasksService.getTasks();
+  getStudents(): void {
+    this.fireBaseService
+      .getStudentList()
+      .subscribe((result: Record<string, Student>) => {
+        Object.values(result).forEach((element, index) => {
+          this.studentList.push({
+            id: Object.keys(result)[index],
+            name_surename: element.name_surename,
+            year_of_birth: element.year_of_birth,
+            gender: element.gender,
+            email: element.email,
+            phone: element.phone,
+            class: element.class,
+          });
+        });
+      });
   }
 
-  deleteTask(index: number): void {
-    this.tasksService.deleteTask(index);
-    this.getTask();
+  deleteStudent(id: string | undefined): void {
+    this.fireBaseService.deleteStudent(id);
+    //this.getStudents();
   }
 
   updateTask(index: number): void {

@@ -11,6 +11,9 @@ import { HeaderNavComponent } from './components/header-nav/header-nav.component
 import { NewTaskPageComponent } from './pages/register-page/register-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { InvalidInputDirective } from './directives/invalid-input.directive';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { InvalidInputDirective } from './directives/invalid-input.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfi),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
